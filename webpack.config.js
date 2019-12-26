@@ -1,5 +1,6 @@
 const webpackMerge = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react");
+const path = require("path");
 
 module.exports = webpackConfigEnv => {
   const defaultConfig = singleSpaDefaults({
@@ -9,6 +10,26 @@ module.exports = webpackConfigEnv => {
   });
 
   return webpackMerge.smart(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
+    module: {
+      rules: [
+        {
+          test: /\.krem.css$/,
+          exclude: [path.resolve(__dirname, "node_modules")],
+          use: [
+            {
+              loader: "kremling-loader",
+              options: {
+                namespace: "planets",
+                postcss: {
+                  plugins: {
+                    autoprefixer: {}
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
   });
 };
