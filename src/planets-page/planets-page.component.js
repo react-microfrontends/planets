@@ -45,7 +45,7 @@ export default function PlanetPage(props) {
         <div className="listWrapper">
           {nextPage ? (
             <button
-              className="brand-button margin-bottom-16"
+              className="mb-8 bg-secondary text-contrast font-bold py-2 px-4 rounded"
               onClick={() => {
                 dispatch({ type: "fetchPlanets" });
               }}

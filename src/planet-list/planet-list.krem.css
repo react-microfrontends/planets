@@ -2,10 +2,10 @@
   height: 50px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--white);
+  border-bottom: 1px solid var(--color-contrast);
   cursor: pointer;
   text-decoration: none;
-  color: var(--white);
+  color: var(--color-contrast);
 }
 
 .planet:last-child {
@@ -13,5 +13,5 @@
 }
 
 .planet:first-child {
-  border-top: 1px solid var(--white);
+  border-top: 1px solid var(--color-contrast);
 }

@@ -42,7 +42,7 @@ export default function NotablePeople(props) {
 function PeopleList(props) {
   const { people, loading } = props;
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-contrast">Loading...</div>;
   } else if (people.length > 0) {
     return (
       <div>
@@ -51,7 +51,7 @@ function PeopleList(props) {
             return (
               <li key={person.id} className="resident">
                 <Link
-                  className="brand-link"
+                  className="text-info"
                   to={`/people?selected=${person.id}`}
                 >
                   {person.name}
