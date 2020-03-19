@@ -12,7 +12,3 @@
   border-left: 2px solid var(--white);
   padding: 24px;
 }
-
-.planetPage {
-  height: calc(100% - var(--navbar-height));
-}
