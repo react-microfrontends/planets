@@ -9,6 +9,6 @@
 
 .selectedWrapper {
   width: 70%;
-  border-left: 2px solid var(--white);
+  border-left: 2px solid var(--color-contrast);
   padding: 24px;
 }
