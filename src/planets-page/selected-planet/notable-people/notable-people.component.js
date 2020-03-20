@@ -42,7 +42,7 @@ export default function NotablePeople(props) {
 function PeopleList(props) {
   const { people, loading } = props;
   if (loading) {
-    return <div className="text-contrast">Loading...</div>;
+    return <div>Loading...</div>;
   } else if (people.length > 0) {
     return (
       <div>

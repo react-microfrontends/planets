@@ -25,7 +25,7 @@ export default function SelectedPlanet(props) {
   }
 
   return (
-    <div {...scope} className="text-contrast">
+    <div {...scope}>
       <div className="planetAttribute">
         <div className="attributeTitle">Climate</div>
         <div className="attribute">{selectedPlanet.climate}</div>

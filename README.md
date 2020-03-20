@@ -1,4 +1,5 @@
 # planets
+
 The microfrontend for showing planets
 
 [![CircleCI](https://circleci.com/gh/react-microfrontends/planets.svg?style=svg)](https://circleci.com/gh/react-microfrontends/planets)
@@ -40,7 +41,7 @@ Go to https://localhost:9001/react-mf-planets.js and verify that you are able to
 Now, go to https://react.microfrontends.app. In the browser console, run the following:
 
 ```js
-localStorage.setItem('devtools', true);
+localStorage.setItem("devtools", true);
 ```
 
 Refresh the page. Click on the tan / beige rectangle:
