@@ -15,7 +15,7 @@ export default class Root extends React.Component {
     return this.state.hasError ? (
       <div>Error</div>
     ) : (
-      <div className="m-t-navBarHeight">
+      <div className="mt-16">
         <BrowserRouter>
           <Route path="/planets" component={PlanetPage} />
         </BrowserRouter>

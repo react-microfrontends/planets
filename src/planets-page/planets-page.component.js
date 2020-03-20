@@ -3,8 +3,6 @@ import PlanetList from "../planet-list/planet-list.component.js";
 import SelectedPlanet from "./selected-planet/selected-planet.component.js";
 import { get } from "lodash";
 import { getPlanets } from "../utils/api.js";
-import { useCss } from "kremling";
-import css from "./planets-page.krem.css";
 
 export default function PlanetPage(props) {
   const initialState = {
@@ -15,7 +13,6 @@ export default function PlanetPage(props) {
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const scope = useCss(css);
 
   useEffect(() => {
     dispatch({ type: "fetchPlanets" });
@@ -27,7 +24,7 @@ export default function PlanetPage(props) {
 
   useEffect(() => {
     if (page > 0) {
-      const req$ = getPlanets(state.page).subscribe(results => {
+      const req$ = getPlanets(page).subscribe(results => {
         dispatch({
           type: "addPlanets",
           payload: {
@@ -40,12 +37,14 @@ export default function PlanetPage(props) {
   }, [page]);
 
   return (
-    <div {...scope} className="planetPage">
-      <div className="planetPageContents">
-        <div className="listWrapper">
+    <div>
+      <div className="flex">
+        <div className="p-6 w-1/3">
           {nextPage ? (
             <button
-              className="brand-button margin-bottom-16"
+              className={`mb-8 ${
+                !nextPage || loading ? "opacity-50 bg-secondary" : "bg-warning"
+              } font-bold py-2 px-4 rounded`}
               onClick={() => {
                 dispatch({ type: "fetchPlanets" });
               }}
@@ -56,7 +55,7 @@ export default function PlanetPage(props) {
           ) : null}
           <PlanetList {...state} />
         </div>
-        <div className="selectedWrapper">
+        <div className="w-2/3 p-6 border-l-2 border-white">
           <div className="selectedPlanet">
             <SelectedPlanet selectedId={selected} />
           </div>
