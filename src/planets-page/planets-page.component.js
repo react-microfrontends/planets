@@ -24,7 +24,7 @@ export default function PlanetPage(props) {
 
   useEffect(() => {
     if (page > 0) {
-      const req$ = getPlanets(state.page).subscribe(results => {
+      const req$ = getPlanets(page).subscribe(results => {
         dispatch({
           type: "addPlanets",
           payload: {
