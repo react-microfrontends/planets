@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getPeopleByIds } from "../../../utils/api.js";
-import { useCss } from "kremling";
-import css from "./notable-people.krem.css";
+import PlanetAttribute from "../planet-attribute.component.js";
 
 export default function NotablePeople(props) {
   const { people } = props;
   const [notablePeople, setPeople] = useState([]);
   const [loading, setLoading] = useState(false);
-  const scope = useCss(css);
   useEffect(() => {
     if (people && people.length > 0) {
       setLoading(true);
@@ -30,12 +28,9 @@ export default function NotablePeople(props) {
   }, [people]);
 
   return (
-    <div className="planetAttribute" {...scope}>
-      <div className="attributeTitle">Notable People</div>
-      <div className="attribute">
-        <PeopleList loading={loading} people={notablePeople} />
-      </div>
-    </div>
+    <PlanetAttribute title={"Notable People"}>
+      <PeopleList loading={loading} people={notablePeople} />
+    </PlanetAttribute>
   );
 }
 

@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useCss } from "kremling";
+import PlanetAttribute from "./planet-attribute.component.js";
 import NotablePeople from "./notable-people/notable-people.component.js";
-import css from "./selected-planet.krem.css";
 import { getPlanet } from "../../utils/api.js";
 
 export default function SelectedPlanet(props) {
   const { selectedId } = props;
   const [selectedPlanet, setPlanet] = useState();
-  const scope = useCss(css);
 
   useEffect(() => {
     if (selectedId) {
@@ -25,31 +23,18 @@ export default function SelectedPlanet(props) {
   }
 
   return (
-    <div {...scope}>
-      <div className="planetAttribute">
-        <div className="attributeTitle">Climate</div>
-        <div className="attribute">{selectedPlanet.climate}</div>
-      </div>
-      <div className="planetAttribute">
-        <div className="attributeTitle">Diameter</div>
-        <div className="attribute">
-          {formatDiameter(selectedPlanet.diameter)}
-        </div>
-      </div>
-      <div className="planetAttribute">
-        <div className="attributeTitle">Gravity</div>
-        <div className="attribute">{selectedPlanet.gravity}</div>
-      </div>
-      <div className="planetAttribute">
-        <div className="attributeTitle">Terrain</div>
-        <div className="attribute">{selectedPlanet.terrain}</div>
-      </div>
-      <div className="planetAttribute">
-        <div className="attributeTitle">Population</div>
-        <div className="attribute">
-          {formatPopulation(selectedPlanet.population)}
-        </div>
-      </div>
+    <div>
+      <PlanetAttribute title={"Climate"} value={selectedPlanet.climate} />
+      <PlanetAttribute
+        title={"Diameter"}
+        value={formatDiameter(selectedPlanet.diameter)}
+      />
+      <PlanetAttribute title={"Gravity"} value={selectedPlanet.gravity} />
+      <PlanetAttribute title={"Terrain"} value={selectedPlanet.terrain} />
+      <PlanetAttribute
+        title={"Population"}
+        value={formatPopulation(selectedPlanet.population)}
+      />
       <NotablePeople people={selectedPlanet.residents} />
     </div>
   );
