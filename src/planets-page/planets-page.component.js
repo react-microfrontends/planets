@@ -3,6 +3,7 @@ import PlanetList from "../planet-list/planet-list.component.js";
 import SelectedPlanet from "./selected-planet/selected-planet.component.js";
 import { get } from "lodash";
 import { getPlanets } from "../utils/api.js";
+import { Button } from "@react-mf/styleguide";
 
 export default function PlanetPage(props) {
   const initialState = {
@@ -41,17 +42,15 @@ export default function PlanetPage(props) {
       <div className="flex">
         <div className="p-6 w-1/3">
           {nextPage ? (
-            <button
-              className={`mb-8 ${
-                !nextPage || loading ? "opacity-50 bg-secondary" : "bg-warning"
-              } font-bold py-2 px-4 rounded`}
+            <Button
+              disabled={loading || !nextPage}
+              loading={loading}
               onClick={() => {
                 dispatch({ type: "fetchPlanets" });
               }}
-              disabled={!nextPage || loading}
             >
               Fetch More Planets
-            </button>
+            </Button>
           ) : null}
           <PlanetList {...state} />
         </div>
