@@ -45,10 +45,7 @@ function PeopleList(props) {
           {people.map(person => {
             return (
               <li key={person.id} className="resident">
-                <Link
-                  className="text-info"
-                  to={`/people?selected=${person.id}`}
-                >
+                <Link className="text-info" to={`/people/${person.id}`}>
                   {person.name}
                 </Link>
               </li>
