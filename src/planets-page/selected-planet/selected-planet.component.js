@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import PlanetAttribute from "./planet-attribute.component.js";
 import NotablePeople from "./notable-people/notable-people.component.js";
 import { getPlanet } from "../../utils/api.js";
+const Films = lazy(() =>
+  System.import("@react-mf/people").then(mod => mod.getFilmsComponent())
+);
 
 export default function SelectedPlanet(props) {
   const { selectedId } = props;
@@ -36,6 +39,11 @@ export default function SelectedPlanet(props) {
         value={formatPopulation(selectedPlanet.population)}
       />
       <NotablePeople people={selectedPlanet.residents} />
+      <PlanetAttribute title={"Films"}>
+        <Suspense fallback={null}>
+          <Films films={selectedPlanet.films} />
+        </Suspense>
+      </PlanetAttribute>
     </div>
   );
 }
