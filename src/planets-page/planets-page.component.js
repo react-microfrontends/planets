@@ -10,7 +10,7 @@ export default function PlanetPage(props) {
     planets: [],
     loading: false,
     page: 0,
-    nextPage: false
+    nextPage: false,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -25,13 +25,13 @@ export default function PlanetPage(props) {
 
   useEffect(() => {
     if (page > 0) {
-      const req$ = getPlanets(page).subscribe(results => {
+      const req$ = getPlanets(page).subscribe((results) => {
         dispatch({
           type: "addPlanets",
           payload: {
             nextPage: !!results.next,
-            results: results.results
-          }
+            results: results.results,
+          },
         });
       });
     }

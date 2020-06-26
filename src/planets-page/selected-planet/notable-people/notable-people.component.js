@@ -10,10 +10,10 @@ export default function NotablePeople(props) {
   useEffect(() => {
     if (people && people.length > 0) {
       setLoading(true);
-      const ids = people.map(person =>
+      const ids = people.map((person) =>
         person.replace("https://swapi.co/api/people/", "").replace("/", "")
       );
-      const sub = getPeopleByIds(ids).subscribe(response => {
+      const sub = getPeopleByIds(ids).subscribe((response) => {
         setLoading(false);
         setPeople(response);
       });
@@ -42,7 +42,7 @@ function PeopleList(props) {
     return (
       <div>
         <ul className="residents">
-          {people.map(person => {
+          {people.map((person) => {
             return (
               <li key={person.id} className="resident">
                 <Link className="text-info" to={`/people/${person.id}`}>

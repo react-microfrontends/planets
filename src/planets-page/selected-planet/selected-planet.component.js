@@ -3,7 +3,7 @@ import PlanetAttribute from "./planet-attribute.component.js";
 import NotablePeople from "./notable-people/notable-people.component.js";
 import { getPlanet } from "../../utils/api.js";
 const Films = lazy(() =>
-  System.import("@react-mf/people").then(mod => mod.getFilmsComponent())
+  System.import("@react-mf/people").then((mod) => mod.getFilmsComponent())
 );
 
 export default function SelectedPlanet(props) {
@@ -12,7 +12,7 @@ export default function SelectedPlanet(props) {
 
   useEffect(() => {
     if (selectedId) {
-      const sub = getPlanet(selectedId).subscribe(planet => {
+      const sub = getPlanet(selectedId).subscribe((planet) => {
         setPlanet(planet);
       });
       return () => {
