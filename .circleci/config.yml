@@ -2,29 +2,29 @@ version: 2
 jobs:
   setup:
     docker:
-      - image: circleci/node:12.13.1
+      - image: znck/pnpm:latest
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
       - run:
           name: Install
-          command: yarn install --frozen-lockfile
+          command: pnpm install --frozen-lockfile
       - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
           paths:
             - node_modules
   build:
     docker:
-      - image: circleci/node:12.13.1
+      - image: znck/pnpm:latest
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
       - run:
           name: Build
           command: |
-            yarn build
+            pnpm run build
             ls dist
       - save_cache:
           key: build-output-{{ .Environment.CIRCLE_SHA1 }}
@@ -35,14 +35,14 @@ jobs:
           destination: dist
   test:
     docker:
-      - image: circleci/node:12.13.1
+      - image: znck/pnpm:latest
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
       - run:
           name: Test and Lint
-          command: yarn lint
+          command: pnpm run lint && pnpm test
   deploy:
     docker:
       - image: google/cloud-sdk
@@ -57,16 +57,21 @@ jobs:
             echo "Going to correct directory"
             cd /home/circleci/project/
             ls dist
+
             echo "Creating google application credentials json file"
             echo $GOOGLE_APPLICATION_CREDENTIALS_JSON > google-application-credentials.json
+
             echo "Authenticating with Google"
             gcloud auth activate-service-account --key-file google-application-credentials.json
+
             echo "Commit sha is $CIRCLE_SHA1. This will be the directory name under $CIRCLE_PROJECT_REPONAME in Cloud Storage."
-            echo "Uploading planets module"
+
+            echo "Uploading module"
             gsutil cp -rZ dist gs://$BUCKET_NAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1
             echo "Updating import map"
             echo '{ "service":"@react-mf/'"$CIRCLE_PROJECT_REPONAME"'","url":"https://'"$CF_PUBLIC_URL"'/'"$CIRCLE_PROJECT_REPONAME"'/'"$CIRCLE_SHA1"'/react-mf-'"$CIRCLE_PROJECT_REPONAME"'.js" }'
             curl -u $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD -d '{ "service":"@react-mf/'"$CIRCLE_PROJECT_REPONAME"'","url":"https://'"$CF_PUBLIC_URL"'/'"$CIRCLE_PROJECT_REPONAME"'/'"$CIRCLE_SHA1"'/react-mf-'"$CIRCLE_PROJECT_REPONAME"'.js" }' -X PATCH http://$DEPLOYER_HOST/services\?env=$DEPLOYER_ENV -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
+
 workflows:
   version: 2
   build_and_deploy:

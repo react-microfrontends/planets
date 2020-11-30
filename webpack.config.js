@@ -9,11 +9,13 @@ module.exports = (webpackConfigEnv) => {
     webpackConfigEnv,
   });
 
-  const rxjsExternals = {
-    externals: [/^rxjs\/?.*$/],
-  };
-
-  return webpackMerge.smart(defaultConfig, rxjsExternals, {
+  return webpackMerge.smart(defaultConfig, {
     // customizations go here
+    externals: [/^rxjs\/?.*$/],
+    devServer: {
+      client: {
+        port: 9001,
+      },
+    },
   });
 };
