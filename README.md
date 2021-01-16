@@ -32,8 +32,8 @@ There are two ways to do local development. It is preferred to do one module at 
 
 ```sh
 cd planets
-yarn install
-yarn start --https --port 9001
+pnpm install
+pnpm start --https --port 9001
 ```
 
 Go to https://localhost:9001/react-mf-planets.js and verify that you are able to load the file without any SSL problems. To solve SSL problems, see [these instructions](https://improveandrepeat.com/2016/09/allowing-self-signed-certificates-on-localhost-with-chrome-and-firefox/).
@@ -60,8 +60,8 @@ Run the root-config project locally:
 
 ```
 cd root-config
-yarn install
-yarn start
+pnpm install
+pnpm start
 ```
 
 Now follow the steps above for "One module at a time" for each of the modules you wish to work on.

@@ -1,6 +1,5 @@
-const webpackMerge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react");
-const path = require("path");
 
 module.exports = (webpackConfigEnv) => {
   const defaultConfig = singleSpaDefaults({
@@ -9,11 +8,8 @@ module.exports = (webpackConfigEnv) => {
     webpackConfigEnv,
   });
 
-  const rxjsExternals = {
-    externals: [/^rxjs\/?.*$/],
-  };
-
-  return webpackMerge.smart(defaultConfig, rxjsExternals, {
+  return merge(defaultConfig, {
     // customizations go here
+    externals: [/^rxjs\/?.*$/],
   });
 };
