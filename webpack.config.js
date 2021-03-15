@@ -8,8 +8,22 @@ module.exports = (webpackConfigEnv) => {
     webpackConfigEnv,
   });
 
+  const standalonePlugin = defaultConfig.plugins.find(
+    (p) => p.constructor.name === "StandaloneSingleSpaPlugin"
+  );
+
+  standalonePlugin.options.importMapUrl = new URL(
+    "https://react.microfrontends.app/importmap.json"
+  );
+
+  const externals = [/^rxjs\/?.*$/];
+
+  if (webpackConfigEnv.standalone) {
+    externals.push("react", "react-dom");
+  }
+
   return merge(defaultConfig, {
     // customizations go here
-    externals: [/^rxjs\/?.*$/],
+    externals,
   });
 };
