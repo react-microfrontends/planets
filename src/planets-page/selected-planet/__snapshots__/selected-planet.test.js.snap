@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`selected-planet should render when no planet is selected 1`] = `
+<div>
+  No planet Selected
+</div>
+`;
