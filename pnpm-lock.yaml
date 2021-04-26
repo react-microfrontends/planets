@@ -42,7 +42,6 @@ specifiers:
 dependencies:
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
-  react-test-renderer: 17.0.2_react@17.0.1
 
 devDependencies:
   '@babel/core': 7.12.10
@@ -71,6 +70,7 @@ devDependencies:
   pretty-quick: 3.1.0_prettier@2.2.1
   react-router: 5.2.0_react@17.0.1
   react-router-dom: 5.2.0_react@17.0.1
+  react-test-renderer: 17.0.2_react@17.0.1
   single-spa-react: 4.0.0_react@17.0.1
   style-loader: 2.0.0_webpack@5.18.0
   systemjs-webpack-interop: 2.3.4_webpack@5.18.0
@@ -6465,7 +6465,7 @@ packages:
 
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
-    dev: false
+    dev: true
 
   /react-router-dom/5.2.0_react@17.0.1:
     resolution: {integrity: sha512-gxAmfylo2QUjcwxI63RhQ5G85Qqt4voZpUXSEqCwykV0baaOTQDR1f0PmY8AELqIyVc0NEZUj0Gov5lNGcXgsA==}
@@ -6508,7 +6508,7 @@ packages:
       object-assign: 4.1.1
       react: 17.0.1
       react-is: 17.0.2
-    dev: false
+    dev: true
 
   /react-test-renderer/17.0.2_react@17.0.1:
     resolution: {integrity: sha512-yaQ9cB89c17PUb0x6UfWRs7kQCorVdHlutU1boVPEsB8IDZH6n9tHxMacc3y0JoXOJUsZb/t/Mb8FUWMKaM7iQ==}
@@ -6520,7 +6520,7 @@ packages:
       react-is: 17.0.2
       react-shallow-renderer: 16.14.1_react@17.0.1
       scheduler: 0.20.2
-    dev: false
+    dev: true
 
   /react/17.0.1:
     resolution: {integrity: sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==}
@@ -6883,7 +6883,7 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-    dev: false
+    dev: true
 
   /schema-utils/2.7.1:
     resolution: {integrity: sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg==}

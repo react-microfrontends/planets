@@ -42,6 +42,7 @@
     "pretty-quick": "^3.1.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-test-renderer": "^17.0.2",
     "single-spa-react": "^4.0.0",
     "style-loader": "^2.0.0",
     "systemjs-webpack-interop": "^2.3.4",
@@ -53,7 +54,6 @@
   },
   "dependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-test-renderer": "^17.0.2"
+    "react-dom": "^17.0.1"
   }
 }
