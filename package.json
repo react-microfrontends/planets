@@ -8,6 +8,7 @@
     "test": "jest --passWithNoTests",
     "watch-tests": "jest --watch",
     "format": "prettier --write .",
+    "check-format": "prettier --check .",
     "coverage": "jest --coverage"
   },
   "husky": {
@@ -55,5 +56,6 @@
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
-  }
+  },
+  "packageManager": "pnpm@9.11.0"
 }
