@@ -3,7 +3,9 @@ import PlanetAttribute from "./planet-attribute.component.js";
 import NotablePeople from "./notable-people/notable-people.component.js";
 import { getPlanet } from "../../utils/api.js";
 const Films = lazy(() =>
-  import(/* webpackIgnore: true */"@react-mf/people").then((mod) => mod.getFilmsComponent())
+  import(/* webpackIgnore: true */ "@react-mf/people").then((mod) =>
+    mod.getFilmsComponent()
+  )
 );
 
 export default function SelectedPlanet(props) {
