@@ -73,6 +73,7 @@ jobs:
           host: ${{ secrets.DEPLOYER_HOST }}
           username: ${{ secrets.DEPLOYER_USERNAME }}
           password: ${{ secrets.DEPLOYER_PASSWORD }}
+          environment-name: react
           service-name: "@react-mf/${{ github.event.repository.name }}"
           service-url: "https://react.microfrontends.app/${{ github.event.repository.name }}/${{ github.run_id }}/react-mf-${{ github.event.repository.name }}.js"
           service-integrity-file-path: react-mf-${{ github.event.repository.name }}.js
