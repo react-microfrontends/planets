@@ -1,10 +1,11 @@
 import SelectedPlanet from "./selected-planet.component.js";
 import React from "react";
-import renderer from "react-test-renderer";
+import { render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 describe("selected-planet", () => {
   it("should render when no planet is selected", () => {
-    const tree = renderer.create(<SelectedPlanet />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const w = render(<SelectedPlanet />);
+    expect(w.container).toMatchSnapshot();
   });
 });
