@@ -2,6 +2,8 @@
 
 exports[`selected-planet should render when no planet is selected 1`] = `
 <div>
-  No planet Selected
+  <div>
+    No planet Selected
+  </div>
 </div>
 `;
