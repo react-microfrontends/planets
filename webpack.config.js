@@ -8,7 +8,6 @@ module.exports = (webpackConfigEnv) => {
     webpackConfigEnv,
   });
 
-
   const externals = [/^rxjs\/?.*$/];
 
   return merge(defaultConfig, {

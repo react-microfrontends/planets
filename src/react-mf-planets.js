@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactDOMClient from 'react-dom/client';
+import ReactDOMClient from "react-dom/client";
 import singleSpaReact from "single-spa-react";
 import Root from "./root.component";
 
